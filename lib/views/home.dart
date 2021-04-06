@@ -5,6 +5,7 @@ import 'package:flutter_news_app/helper/news.dart';
 import 'package:flutter_news_app/models/ArticleModel.dart';
 import 'package:flutter_news_app/models/CategoryModel.dart';
 import 'package:flutter_news_app/views/article.dart';
+import 'package:flutter_news_app/views/category.dart';
 
 class Home extends StatefulWidget {
 	@override
@@ -95,8 +96,8 @@ class _HomeState extends State<Home> {
 }
 
 class CategoryTile extends StatelessWidget {
-	final imgUrl;
-	final categoryName;
+	final String imgUrl;
+	final String categoryName;
 
 	CategoryTile({this.imgUrl, this.categoryName});
 
@@ -104,7 +105,14 @@ class CategoryTile extends StatelessWidget {
 	Widget build(BuildContext context) {
 		return GestureDetector(
 			onTap: () {
-
+				Navigator.push(
+					context,
+					MaterialPageRoute(
+						builder: (context) => CategoryClass(
+							categoryTitle: categoryName.toLowerCase()
+						)
+					)
+				);
 			},
 			child: Container(
 				margin: EdgeInsets.only(right: 16),
